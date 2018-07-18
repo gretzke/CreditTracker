@@ -145,15 +145,15 @@ export class CdosComponent implements OnInit {
 
   sampleData2: any =
   [
-      { Country: 'China', Volume: 7, Percent: 19.18 },
-      { Country: 'India', Volume: 9, Percent: 17.22 },
-      { Country: 'USA', Volume: 4, Percent: 4.47 },
-      { Country: 'Indonesia', Volume: 24, Percent: 3.38 },
-      { Country: 'Brazil', Volume: 44, Percent: 2.74 }
+      { Country: 'WKN_01', Volume: 7, Percent: 19.18 },
+      { Country: 'WKN_02', Volume: 9, Percent: 17.22 },
+      { Country: 'WKN_03', Volume: 4, Percent: 4.47 },
+      { Country: 'WKN_04', Volume: 24, Percent: 3.38 },
+      { Country: 'WKN_05', Volume: 44, Percent: 2.74 }
   ];
 
  
-  legendLayout: any = { left: 700, top: 160, width: 300, height: 200, flow: 'vertical' };
+  legendLayout: any = { left: 450, top: 10, width: 300, height: 200, flow: 'vertical' };
   seriesGroups: any[] =
     [
         {
@@ -161,16 +161,12 @@ export class CdosComponent implements OnInit {
             showLabels: true,
             series: [
                 { dataField: 'Volume',
-                 displayText: 'Volume in $',
+                 displayText: 'Country',
                  labelRadius: 120,
                  initialAngle: 15,
                  radius: 100,
                  centerOffset: 0, 
-                 formatFunction: (value: any) => {
-                  if (isNaN(value))
-                      return value;
-                  return parseFloat(value) + '%';
-              },
+                 
                 }]
         }
     ];
