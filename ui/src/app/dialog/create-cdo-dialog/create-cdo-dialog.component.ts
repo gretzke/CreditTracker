@@ -39,9 +39,9 @@ export class CreateCdoDialogComponent {
     console.log(this.data);
     console.log(JSON.stringify(this.data))
     
-    this.data.mortgages.forEach(element => {
-      element.cdoID = this.data.cdoID
-    });
+    // this.data.mortgages.forEach(element => {
+    //   element.cdoID = this.data.cdoID
+    // });
     // this.data.owner = this.data.mortgages[0].owner
     this.data.start = new Date()
     this.dataService.createCDO(this.data);
