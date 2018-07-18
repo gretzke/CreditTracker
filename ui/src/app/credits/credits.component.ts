@@ -140,7 +140,7 @@ export class CreditsComponent implements OnInit {
 
   addCredit(data: any) {
     const dialogRef = this.dialog.open(AddCreditDialogComponent, {
-      data: {  }
+      data: {}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -176,9 +176,16 @@ export class CreditsComponent implements OnInit {
   }
 
   private refreshTable() {
+    console.log('Refreshing Table...');
     this.dataSource.filter = '';
     this.data.getCredits().subscribe((res: any[]) => {
-      this.credits = res;
+      console.log(res);
+      this.credits = [];
+      for (let i = 0; i < res.length; i++) {
+        if (res[i].cdo === undefined) {
+          this.credits.push(res[i]);
+        }
+      }
       this.dataSource = new MatTableDataSource(this.credits);
     });
     // this.dataSource.filter = this.filter.nativeElement.value;
@@ -188,10 +195,7 @@ export class CreditsComponent implements OnInit {
     // this.data.getCredits().subscribe(
     //   data => this.credits$ = data
     // );
-    this.data.getCredits().subscribe((res: any[]) => {
-      this.credits = res;
-      this.dataSource = new MatTableDataSource(this.credits);
-    });
+    this.refreshTable();
   }
 
   // getCredits()
