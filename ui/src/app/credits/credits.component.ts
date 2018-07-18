@@ -162,7 +162,6 @@ export class CreditsComponent implements OnInit {
         mortgages: this.selectedRows
       }
     });
-    this.refreshTable();
     // this.dataService.createDTO(data);
 
     dialogRef.afterClosed().subscribe(result => {
@@ -171,6 +170,7 @@ export class CreditsComponent implements OnInit {
         // For add we're just pushing a new row inside DataService
         // this.exampleDatabase.dataChange.value.push(this.dataService.getDialogData());
         // this.refreshTable();
+        this.refreshTable();
       }
     });
   }
