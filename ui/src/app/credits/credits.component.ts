@@ -148,6 +148,9 @@ export class CreditsComponent implements OnInit {
         // After dialog is closed we're doing frontend updates
         // For add we're just pushing a new row inside DataService
         // this.exampleDatabase.dataChange.value.push(this.dataService.getDialogData());
+        // this.snackBar.open("Mortgage added.", "Ok", {
+        //   duration: 500,
+        // });
         this.refreshTable();
       }
     });

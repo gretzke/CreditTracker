@@ -36,6 +36,13 @@
       </mat-form-field>
     </div>
 
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Owner" [(ngModel)]="data.owner" name="owner">
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
     <!-- <div class="form">
       <mat-form-field color="accent">
         <input matInput #input class="form-control" placeholder="Avg Interest" [(ngModel)]="data.avgInterest" name="avgInterest">
