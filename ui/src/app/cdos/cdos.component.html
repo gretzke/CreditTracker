@@ -47,19 +47,10 @@
       <td mat-cell *matCellDef="let element"> {{element.runtime}}</td>
     </ng-container>
     <ng-container matColumnDef="mortgages">
-      <th mat-header-cell *matHeaderCellDef> Total Rating </th>
-      <td mat-cell *matCellDef="let element"> {{element.mortgages}}</td>
+      <th mat-header-cell *matHeaderCellDef> Mortgages </th>
+      <td mat-cell *matCellDef="let element"> {{element.mortgagesIDs}}</td>
     </ng-container>
-    <!-- <ng-container matColumnDef="cdo_volume">
-      <th mat-header-cell *matHeaderCellDef> CDO Volume </th>
-      <td mat-cell *matCellDef="let element"> {{element.cdo_volume}} $</td>
-    </ng-container>
-    <ng-container matColumnDef="last_combined_cdos">
-      <th mat-header-cell *matHeaderCellDef> Last Combined CDOs </th>
-      <td mat-cell *matCellDef="let element"> {{element.last_combined_cdos}} </td>
-    </ng-container> -->
-
-    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+    
     <ng-container matColumnDef="expandedDetail">
       <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
         <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
