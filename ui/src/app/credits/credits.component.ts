@@ -15,8 +15,6 @@ import { MatTableDataSource } from '@angular/material';
 
 import { SelectionModel } from '@angular/cdk/collections';
 
-// import { Observable } from 'rxjs';
-import { User } from '../models/user.model';
 
 import { AddCreditDialogComponent } from '../dialog/add-credit-dialog/add-credit-dialog.component';
 import { MatDialog } from '@angular/material';
@@ -140,7 +138,29 @@ export class CreditsComponent implements OnInit {
 
   addCredit(data: any) {
     const dialogRef = this.dialog.open(AddCreditDialogComponent, {
-      data: {  }
+      data: {
+        "originalOwner": "IBM",
+        "currentOwner": "IBM",
+        "mortgageID": "IBM_01",
+        "name": "Sherri Thomas",
+        "birthday": "1980-12-31T23:06:32.000Z",
+        "city": "München",
+        "zip": "80807",
+        "street": "Mies-van-der-Rohe-Straße 6",
+        "mortgageCity": "München",
+        "mortgageZip": "80807",
+        "mortgageStreet": "Mies-van-der-Rohe-Straße 6",
+        "job": "Head of Watson IoT Global Headquarters",
+        "salary": 200000,
+        "interest": 3,
+        "period": 2,
+        "start": new Date(),
+        "volume": 300000,
+        "employer": "IBM",
+        "asset": "IBM Tower",
+        "rating": "AAA",
+        "bankingInfo": "Münchner Bank"
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -162,7 +182,6 @@ export class CreditsComponent implements OnInit {
         mortgages: this.selectedRows
       }
     });
-    this.refreshTable();
     // this.dataService.createDTO(data);
 
     dialogRef.afterClosed().subscribe(result => {
@@ -171,14 +190,21 @@ export class CreditsComponent implements OnInit {
         // For add we're just pushing a new row inside DataService
         // this.exampleDatabase.dataChange.value.push(this.dataService.getDialogData());
         // this.refreshTable();
+        this.refreshTable();
       }
     });
   }
 
   private refreshTable() {
+    console.log('Refreshing Table...');
     this.dataSource.filter = '';
     this.data.getCredits().subscribe((res: any[]) => {
-      this.credits = res;
+      this.credits = [];
+      for (let i = 0; i < res.length; i++) {
+        if (res[i].cdo === undefined) {
+          this.credits.push(res[i]);
+        }
+      }
       this.dataSource = new MatTableDataSource(this.credits);
     });
     // this.dataSource.filter = this.filter.nativeElement.value;
@@ -188,10 +214,7 @@ export class CreditsComponent implements OnInit {
     // this.data.getCredits().subscribe(
     //   data => this.credits$ = data
     // );
-    this.data.getCredits().subscribe((res: any[]) => {
-      this.credits = res;
-      this.dataSource = new MatTableDataSource(this.credits);
-    });
+    this.refreshTable();
   }
 
   // getCredits()
@@ -205,14 +228,4 @@ export class CreditsComponent implements OnInit {
   //     // });
   //   })
   // }
-}
-
-export class UserDataSource extends DataSource<any> {
-  constructor(private userService: DataService) {
-    super();
-  }
-  connect(): Observable<User[]> {
-    return this.userService.getUser();
-  }
-  disconnect() {}
 }
