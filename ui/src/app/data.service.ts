@@ -13,7 +13,8 @@ import {MatSnackBar} from '@angular/material';
 })
 export class DataService {
 
-  // private serviceUrl = 'https://jsonplaceholder.typicode.com/users';
+  private mortageUrl = 'http://composer-rest-server-vehicle-manufacture-netw-1531913291543.mybluemix.net/api/Mortgage';
+  private cdoUrl = 'http://composer-rest-server-vehicle-manufacture-netw-1531913291543.mybluemix.net/api/CDO'
   // private readonly API_URL = 'https://composer-rest-server-vehicle-manufacture-netw-1531824951915.mybluemix.net/api/Mortgage';
 
 
@@ -24,11 +25,11 @@ export class DataService {
   }
 
   getCredits() {
-    return this.http.get("http://composer-rest-server-vehicle-manufacture-netw-1531824951915.mybluemix.net/api/mortgage");
+    return this.http.get(this.mortageUrl);
   }
 
   addCredit(mortgage){
-    return this.http.post("http://composer-rest-server-vehicle-manufacture-netw-1531824951915.mybluemix.net/api/mortgage", mortgage).subscribe(
+    return this.http.post(this.mortageUrl, mortgage).subscribe(
       res => {
         console.log(res);
         this.snackBar.open("Mortgage added.", "Ok", {
@@ -48,7 +49,7 @@ export class DataService {
   }
 
   createCDO(cdo){
-    return this.http.post("https://composer-rest-server-vehicle-manufacture-netw-1531824951915.mybluemix.net/api/CDO", cdo).subscribe(
+    return this.http.post(this.cdoUrl, cdo).subscribe(
       res => {
         console.log(res);
         this.snackBar.open("CDO created", "Ok", {
@@ -68,6 +69,6 @@ export class DataService {
   }
 
   getCdos() {
-    return this.http.get('http://composer-rest-server-vehicle-manufacture-netw-1531824951915.mybluemix.net/api/CDO')
+    return this.http.get(this.cdoUrl)
   }
 }
