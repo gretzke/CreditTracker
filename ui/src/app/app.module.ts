@@ -15,7 +15,7 @@ import { DataService } from './data.service';
 
 import {
   MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatPaginatorModule, MatSortModule,
-  MatTableModule, MatToolbarModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule
+  MatTableModule, MatToolbarModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule, MatSnackBarModule
 } from '@angular/material';
 import { AddCreditDialogComponent } from './dialog/add-credit-dialog/add-credit-dialog.component';
 
@@ -53,7 +53,8 @@ import { CreateCdoDialogComponent } from './dialog/create-cdo-dialog/create-cdo-
     FormsModule, 
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSnackBarModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent],
