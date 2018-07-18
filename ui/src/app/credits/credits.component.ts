@@ -15,8 +15,6 @@ import { MatTableDataSource } from '@angular/material';
 
 import { SelectionModel } from '@angular/cdk/collections';
 
-// import { Observable } from 'rxjs';
-import { User } from '../models/user.model';
 
 import { AddCreditDialogComponent } from '../dialog/add-credit-dialog/add-credit-dialog.component';
 import { MatDialog } from '@angular/material';
@@ -140,7 +138,29 @@ export class CreditsComponent implements OnInit {
 
   addCredit(data: any) {
     const dialogRef = this.dialog.open(AddCreditDialogComponent, {
-      data: {  }
+      data: {
+        "originalOwner": "IBM",
+        "currentOwner": "IBM",
+        "mortgageID": "IBM_01",
+        "name": "Sherri Thomas",
+        "birthday": "1980-12-31T23:06:32.000Z",
+        "city": "München",
+        "zip": "80807",
+        "street": "Mies-van-der-Rohe-Straße 6",
+        "mortgageCity": "München",
+        "mortgageZip": "80807",
+        "mortgageStreet": "Mies-van-der-Rohe-Straße 6",
+        "job": "Head of Watson IoT Global Headquarters",
+        "salary": 200000,
+        "interest": 3,
+        "period": 2,
+        "start": new Date(),
+        "volume": 300000,
+        "employer": "IBM",
+        "asset": "IBM Tower",
+        "rating": "AAA",
+        "bankingInfo": "Münchner Bank"
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
