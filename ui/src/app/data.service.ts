@@ -18,10 +18,6 @@ export class DataService {
 
   constructor(private http: HttpClient, public snackBar: MatSnackBar) {}
 
-  getUser(): Observable<User[]> {
-    return this.http.get<User[]>('https://jsonplaceholder.typicode.com/users');
-  }
-
   getCredits() {
     return this.http.get(this.mortageUrl);
   }
