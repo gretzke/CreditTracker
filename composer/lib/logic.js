@@ -53,8 +53,10 @@ async function appendMortgageToCDO(appendMortgageToCDO) {
     // append Mortgage
     appendMortgageToCDO.cdo.mortgages.push(appendMortgageToCDO.mortgage);
     // commit change to ledger
-    const assetRegistry = await getAssetRegistry('org.dltcamp.credittracker.CDO');
-    await assetRegistry.update(appendMortgageToCDO.cdo);
+    const assetRegistryCDO = await getAssetRegistry('org.dltcamp.credittracker.CDO');
+    await assetRegistryCDO.update(appendMortgageToCDO.cdo);
+    const assetRegistryMortgage = await getAssetRegistry('org.dltcamp.credittracker.Mortgage');
+    await assetRegistryMortgage.update(appendMortgageToCDO.mortgage);
 }
 
 /** 
