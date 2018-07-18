@@ -10,6 +10,7 @@ import { CreditDetailsComponent } from './credit-details/credit-details.componen
 import { CdosComponent } from './cdos/cdos.component';
 
 import { HttpClientModule } from '@angular/common/http';  // <-Add here
+import { jqxChartComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxchart';
 
 import { DataService } from './data.service';
 
@@ -35,6 +36,7 @@ import { CreateCdoDialogComponent } from './dialog/create-cdo-dialog/create-cdo-
     CdosComponent,
     AddCreditDialogComponent,
     CreateCdoDialogComponent,
+    jqxChartComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,8 @@ import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DataSource } from '@angular/cdk/collections';
+import { jqxChartComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxchart';
+
 import {
   animate,
   state,
@@ -132,6 +134,46 @@ const TABLE_DATA = [
   ]
 })
 export class CdosComponent implements OnInit {
+  sampleData: any =
+  [
+      { Country: 'China', Volume: 13470, Percent: 19.18 },
+      { Country: 'India', Volume: 121018, Percent: 17.22 },
+      { Country: 'USA', Volume: 313910, Percent: 4.47 },
+      { Country: 'Indonesia', Volume: 237626, Percent: 3.38 },
+      { Country: 'Brazil', Volume: 192396, Percent: 2.74 }
+  ];
+
+  sampleData2: any =
+  [
+      { Country: 'China', Volume: 7, Percent: 19.18 },
+      { Country: 'India', Volume: 9, Percent: 17.22 },
+      { Country: 'USA', Volume: 4, Percent: 4.47 },
+      { Country: 'Indonesia', Volume: 24, Percent: 3.38 },
+      { Country: 'Brazil', Volume: 44, Percent: 2.74 }
+  ];
+
+ 
+  legendLayout: any = { left: 700, top: 160, width: 300, height: 200, flow: 'vertical' };
+  seriesGroups: any[] =
+    [
+        {
+            type: 'pie',
+            showLabels: true,
+            series: [
+                { dataField: 'Volume',
+                 displayText: 'Volume in $',
+                 labelRadius: 120,
+                 initialAngle: 15,
+                 radius: 100,
+                 centerOffset: 0, 
+                 formatFunction: (value: any) => {
+                  if (isNaN(value))
+                      return value;
+                  return parseFloat(value) + '%';
+              },
+                }]
+        }
+    ];
   displayedColumns = [
     'cdoID',
     'cdoName',

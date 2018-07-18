@@ -1,7 +1,19 @@
-<!-- <table ><tr ><td class="img-cell"><img src="assets/images/creditrckr_euro.png" alt="Italian Trulli"> </td><td><h1>CDO</h1></td></tr>
-</table> -->
+<table><tr><td style="vertical-align:top"><h1>CDO</h1></td><td>
+<jqxChart 
+  [width]="600" [height]="300" 
+  [title]="'Total Volume in CDOs'" [description]="''" 
+  [enableAnimations]="true" [showLegend]="false" [padding]="padding" [backgroundColor]="'#F2F2F2'"
+  [titlePadding]="titlePadding" [source]="sampleData" [xAxis]="xAxis" [showBorderLine]="false"
+  [valueAxis]="false" [seriesGroups]="seriesGroups" [colorScheme]="'scheme01'">
+  </jqxChart></td><td><jqxChart 
+    [width]="600" [height]="300" 
+    [title]="'Amount of Mortages in CDOs'" [description]="''" 
+    [enableAnimations]="true" [showLegend]="true" [padding]="padding" [backgroundColor]="'#F2F2F2'"
+    [titlePadding]="titlePadding" [source]="sampleData2" [xAxis]="xAxis" [showBorderLine]="false"
+    [valueAxis]="false" [seriesGroups]="seriesGroups" [colorScheme]="'scheme01'" [legendLayout]="legendLayout">
+    </jqxChart></td></tr></table>
+    
 
-<h1>CDOs</h1>
 
 <div>
   <!-- <div class="float-right">
