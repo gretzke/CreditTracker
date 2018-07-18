@@ -1,17 +1,17 @@
-<h1>CDO</h1>
+<table><tr><td style="vertical-align:top"><h1>CDO</h1></td><td>
 <jqxChart 
-  [width]="350" [height]="300" 
-  [title]="'Combined Volume in CDOs'" [description]="''" 
-  [enableAnimations]="true" [showLegend]="true" [padding]="padding" [backgroundColor]="'#F2F2F2'"
+  [width]="600" [height]="300" 
+  [title]="'Total Volume in CDOs'" [description]="''" 
+  [enableAnimations]="true" [showLegend]="false" [padding]="padding" [backgroundColor]="'#F2F2F2'"
   [titlePadding]="titlePadding" [source]="sampleData" [xAxis]="xAxis" [showBorderLine]="false"
   [valueAxis]="false" [seriesGroups]="seriesGroups" [colorScheme]="'scheme01'">
-  </jqxChart><jqxChart 
-    [width]="350" [height]="300" 
-    [title]="'Combined Mortages in CDOs'" [description]="''" 
-    [enableAnimations]="true" [showLegend]="false" [padding]="padding" [backgroundColor]="'#F2F2F2'"
+  </jqxChart></td><td><jqxChart 
+    [width]="600" [height]="300" 
+    [title]="'Amount of Mortages in CDOs'" [description]="''" 
+    [enableAnimations]="true" [showLegend]="true" [padding]="padding" [backgroundColor]="'#F2F2F2'"
     [titlePadding]="titlePadding" [source]="sampleData2" [xAxis]="xAxis" [showBorderLine]="false"
-    [valueAxis]="false" [seriesGroups]="seriesGroups" [colorScheme]="'scheme01'">
-    </jqxChart>
+    [valueAxis]="false" [seriesGroups]="seriesGroups" [colorScheme]="'scheme01'" [legendLayout]="legendLayout">
+    </jqxChart></td></tr></table>
     
 
 

@@ -153,8 +153,8 @@ export class CdosComponent implements OnInit {
   ];
 
  
- 
-    seriesGroups: any[] =
+  legendLayout: any = { left: 700, top: 160, width: 300, height: 200, flow: 'vertical' };
+  seriesGroups: any[] =
     [
         {
             type: 'pie',
