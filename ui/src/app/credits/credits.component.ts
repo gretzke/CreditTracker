@@ -199,7 +199,6 @@ export class CreditsComponent implements OnInit {
     console.log('Refreshing Table...');
     this.dataSource.filter = '';
     this.data.getCredits().subscribe((res: any[]) => {
-      console.log(res);
       this.credits = [];
       for (let i = 0; i < res.length; i++) {
         if (res[i].cdo === undefined) {
