@@ -170,7 +170,9 @@ export class CdosComponent implements OnInit {
   ngOnInit() {
     this.data.getCdos().subscribe((res: any[]) => {
 
-      res.forEach(cdo => {
+      this.cdos = res;
+
+      this.cdos.forEach(cdo => {
         var mortgageString = "";
         cdo.mortgages.forEach(element => {
           if (mortgageString === "") {
@@ -181,22 +183,7 @@ export class CdosComponent implements OnInit {
         });
         cdo.mortgagesIDs = mortgageString;
       });
-
-      // res.forEach(element => {
-      //   var mortgageString = "";
-      //   element.mortgages.forEach(mortgage => {
-      //     mortgageString = mortgageString + ", " + element.mortgageID; 
-      //   })
-      //   element.mortgagesIDs = mortgageString;
-      // });
-      // res[0].mortgages.forEach(element => {
-      //   // cdoString.concat(element);
-
-      // });
-    
-      this.cdos = res;
-      // this.cdos.push(cdoString);
-      // this.cdos.mortgagesIDs = cdoString;
+      
       this.dataSource = new MatTableDataSource(this.cdos);
     });
   }
