@@ -40,7 +40,7 @@ asset Mortgage identified by mortgageID {
   o String asset
   o String rating
   o String bankingInfo
-  --> CDO cdo
+  --> CDO cdo optional
 }
 
 // collateralized debt obligation, consiting of multiple mortgages
