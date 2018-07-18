@@ -1,0 +1,6 @@
+query selectMortgagesByOwner {
+  description: "Select mortgages by their owner"
+  statement:
+    SELECT org.dltcamp.credittracker.Mortgage
+      WHERE (currentOwner == _$owner)
+}

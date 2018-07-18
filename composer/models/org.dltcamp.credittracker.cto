@@ -1,0 +1,88 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Write your model definitions here
+ */
+
+namespace org.dltcamp.credittracker
+
+asset Mortgage identified by mortgageID {
+  o String originalOwner
+  o String currentOwner
+  o String mortgageID
+  o String name
+  o String birthday
+  o String city
+  o String zip
+  o String street
+  o String mortgageCity
+  o String mortgageZip
+  o String mortgageStreet
+  o String job
+  o Integer salary
+  o Double interest
+  o Double period
+  o String start
+  o Double volume
+  o String employer
+  o String asset
+  o String rating
+  o String bankingInfo
+  --> CDO cdo
+}
+
+// collateralized debt obligation, consiting of multiple mortgages
+asset CDO identified by cdoID {
+  o String owner
+  o String cdoID
+  o String cdoName
+  o String rating
+  o String runtime
+  o String start
+  o Mortgage[] mortgages
+}
+
+transaction TransferMortgage {
+  --> Mortgage mortgage
+  o String newOwner
+}
+
+transaction TransferCDO {
+  --> CDO cdo
+  o String newOwner
+}
+
+transaction AppendMortgageToCDO {
+  --> CDO cdo
+  --> Mortgage mortgage
+}
+
+transaction MergeCDOs {
+  --> CDO sourceCDO
+  --> CDO targetCDO
+}
+
+/**
+@returns(Integer)
+transaction GetTotalPrincipal {
+  --> CDO cdo
+}
+
+event SampleEvent {
+  --> Mortgag asset
+  o String oldValue
+  o String newValue
+}
+*/

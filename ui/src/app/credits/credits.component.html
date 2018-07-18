@@ -1,0 +1,147 @@
+<table ><tr ><td class="img-cell"><img src="assets/images/creditrckr_euro.png" alt="Italian Trulli"> </td><td><h1>Mortgage</h1></td></tr>
+</table>
+
+
+<div>
+  <div class="float-right">
+    <button mat-raised-button class="space" (click)="addCredit()">Add Credit </button>
+    <button mat-raised-button [disabled]="selectedRows.length == 0" (click)="createCDO()">Create CDO </button>
+  </div>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-cell">
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (click)="onAllClick()" (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="onclick(row)" (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+          [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="mortgageID">
+      <th mat-header-cell *matHeaderCellDef> Mortgage ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.mortgageID}} </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="birthday">
+      <th mat-header-cell *matHeaderCellDef> Birthday </th>
+      <td mat-cell *matCellDef="let element"> {{element.birthday}} </td>
+    </ng-container>
+    <ng-container matColumnDef="job">
+      <th mat-header-cell *matHeaderCellDef> Job </th>
+      <td mat-cell *matCellDef="let element"> {{element.job}} </td>
+    </ng-container>
+    <ng-container matColumnDef="interest">
+      <th mat-header-cell *matHeaderCellDef> Interest </th>
+      <td mat-cell *matCellDef="let element"> {{element.interest}} % </td>
+    </ng-container>
+    <ng-container matColumnDef="period">
+      <th mat-header-cell *matHeaderCellDef> Period </th>
+      <td mat-cell *matCellDef="let element"> {{element.period}} Years</td>
+    </ng-container>
+    <ng-container matColumnDef="start">
+      <th mat-header-cell *matHeaderCellDef> Start </th>
+      <td mat-cell *matCellDef="let element"> {{element.start}}</td>
+    </ng-container>
+    <ng-container matColumnDef="volume">
+      <th mat-header-cell *matHeaderCellDef> Volume </th>
+      <td mat-cell *matCellDef="let element"> {{element.volume}} €</td>
+    </ng-container>
+    <ng-container matColumnDef="asset">
+      <th mat-header-cell *matHeaderCellDef> Asset </th>
+      <td mat-cell *matCellDef="let element"> {{element.asset}} </td>
+    </ng-container>
+    <ng-container matColumnDef="rating">
+      <th mat-header-cell *matHeaderCellDef> Rating </th>
+      <td mat-cell *matCellDef="let element"> {{element.rating}} </td>
+    </ng-container>
+
+    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+    <ng-container matColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+        <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+          <div class="data-first">
+            <h3> Personal Data </h3>
+            <p>Credit ID: {{element.mortgageID}}</p>
+            <p>Name: {{element.name}} </p>
+            <p>Name: {{element.birthday}} </p>
+            <p>City: {{element.zip}} {{element.city}} </p>
+            <p>Street: {{element.street}} </p>
+          </div>
+
+          <div class=data>
+            <h3> Employee Data </h3>
+            <span>Employer: {{element.employer}}</span>
+            <p>Job: {{element.job}} </p>
+            <p>Salary: {{element.salary}} €</p>
+          </div>
+
+          <div class=data>
+            <h3> Bank Data </h3>
+            <span>Bank: {{element.owner}}</span>
+            <p>IBAN: {{element.bankingInfo}} </p>
+          </div>
+
+          <div class=data>
+            <h3> Credit Data </h3>
+            <span>Volume: {{element.volume}} €</span>
+            <p>Interest: {{element.interest}} %</p>
+            <p>Period: {{element.period}} Years </p>
+            <p>Start: {{element.start}} </p>
+            <p>Asset: {{element.asset}} </p>
+            <p>Rating: {{element.rating}} </p>
+          </div>
+
+          <!-- <div class="example-element-weight"> {{element.weight}} </div>
+
+          <div class="example-element-description">
+            {{element.description}}
+            <span class="example-element-description-attribution">  Wikipedia </span>
+          </div> -->
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button color="primary" (click)="addNew()">
+          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+        </button>
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row; let i=index;">
+        <button mat-icon-button color="accent" (click)="startEdit(i, row.name, row.email, row.phone)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" (click)="deleteItem(i, row.id, row.title, row.state, row.url)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container> -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="example-element-row" [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = element">
+    </tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+
+    <!-- <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row> -->
+
+  </table>
+
+  <div class="no-results" [style.display]="dataSource.length == 0 ? '' : 'none'">
+    No results
+  </div>
+
+</div>

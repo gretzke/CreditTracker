@@ -1,0 +1,10 @@
+# Hyperledger Composer business-network archive (generated)
+*.bna
+# Mac garbage
+.DS_Store
+# secret credentials
+*.pem
+*.card
+connection-profile.json
+cloudant.json
+credentials/
